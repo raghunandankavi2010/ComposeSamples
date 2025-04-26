@@ -6,4 +6,5 @@ sealed class Screen(val route: String) {
     object EffectOrderScreen: Screen("effect_order_screen")
     object DraggablePanelScreen: Screen("draggable_panel_screen")
     object SnapShotMutationPolicyScreen: Screen("snap_shot_mutation_policy")
+    object AvoidLaunchEffectScreen: Screen("avoid_launch_effect_initial")
 }

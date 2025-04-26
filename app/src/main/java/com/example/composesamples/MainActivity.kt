@@ -25,7 +25,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.composesamples.ui.theme.ComposeSamplesTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,10 @@ class MainActivity : ComponentActivity() {
 
                     composable(route = Screen.SnapShotMutationPolicyScreen.route) {
                         UserUi()
+                    }
+
+                    composable(route = Screen.AvoidLaunchEffectScreen.route) {
+                        ParentScreen()
                     }
                 }
             }
@@ -84,8 +90,10 @@ fun MainScreen(modifier: Modifier = Modifier, navigateTo: (String) -> Unit) {
                     Screen.EffectOrderScreen.route to "Effect Order"
                 } else if (index == 1) {
                     Screen.DraggablePanelScreen.route to "Draggable Pane"
-                } else {
+                } else if (index == 2) {
                     Screen.SnapShotMutationPolicyScreen.route to "SnapShot Mutation Policy"
+                } else {
+                    Screen.AvoidLaunchEffectScreen.route to "Avoid LaunchEffect"
                 }
                 Button(modifier = Modifier.fillMaxWidth(), onClick = {
                     navigateTo(route)
