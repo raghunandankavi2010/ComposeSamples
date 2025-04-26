@@ -47,6 +47,10 @@ class MainActivity : ComponentActivity() {
                     composable(route = Screen.DraggablePanelScreen.route) {
                         DraggablePanel()
                     }
+
+                    composable(route = Screen.SnapShotMutationPolicyScreen.route) {
+                        UserUi()
+                    }
                 }
             }
         }
@@ -75,11 +79,13 @@ fun MainScreen(modifier: Modifier = Modifier, navigateTo: (String) -> Unit) {
                 .padding(innerPadding)
                 .padding(16.dp)
         ) {
-            items(2) { index ->
+            items(3) { index ->
                 val (route, buttonText) = if (index == 0) {
                     Screen.EffectOrderScreen.route to "Effect Order"
-                } else {
+                } else if (index == 1) {
                     Screen.DraggablePanelScreen.route to "Draggable Pane"
+                } else {
+                    Screen.SnapShotMutationPolicyScreen.route to "SnapShot Mutation Policy"
                 }
                 Button(modifier = Modifier.fillMaxWidth(), onClick = {
                     navigateTo(route)
