@@ -4,4 +4,5 @@ package com.example.composesamples
 sealed class Screen(val route: String) {
     object Main: Screen("main_screen")
     object EffectOrderScreen: Screen("effect_order_screen")
+    object DraggablePanelScreen: Screen("draggable_panel_screen")
 }

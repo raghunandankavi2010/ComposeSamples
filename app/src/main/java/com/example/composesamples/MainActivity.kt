@@ -41,7 +41,11 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     composable(route = Screen.EffectOrderScreen.route) {
-                        EffectOrder()
+                        EffectOrder("Launch Effect Key")
+                    }
+
+                    composable(route = Screen.DraggablePanelScreen.route) {
+                        DraggablePanel()
                     }
                 }
             }
@@ -64,17 +68,24 @@ fun MainScreen(modifier: Modifier = Modifier, navigateTo: (String) -> Unit) {
                     Text("Compose Example")
                 })
         }
-    ){ innerPadding ->
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .padding(innerPadding)
-            .padding(16.dp)) {
-            items(1) {
+    ) { innerPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .padding(16.dp)
+        ) {
+            items(2) { index ->
+                val (route, buttonText) = if (index == 0) {
+                    Screen.EffectOrderScreen.route to "Effect Order"
+                } else {
+                    Screen.DraggablePanelScreen.route to "Draggable Pane"
+                }
                 Button(modifier = Modifier.fillMaxWidth(), onClick = {
-                    navigateTo(Screen.EffectOrderScreen.route)
+                    navigateTo(route)
                 }, content = {
                     Text(
-                        text = "Effect Order",
+                        text = buttonText,
                         modifier = modifier
                     )
                 }
