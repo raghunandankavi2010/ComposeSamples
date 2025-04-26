@@ -24,6 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.composesamples.lists.DetailScreen
+import com.example.composesamples.lists.MyList
 import com.example.composesamples.ui.theme.ComposeSamplesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -57,6 +59,16 @@ class MainActivity : ComponentActivity() {
                     composable(route = Screen.AvoidLaunchEffectScreen.route) {
                         ParentScreen()
                     }
+
+                    composable(route = Screen.ListScreen.route) {
+                        MyList {
+                            navController.navigate(Screen.DetailScreen.route)
+                        }
+                    }
+
+                    composable(route = Screen.DetailScreen.route) {
+                        DetailScreen(navController = navController)
+                    }
                 }
             }
         }
@@ -85,14 +97,17 @@ fun MainScreen(modifier: Modifier = Modifier, navigateTo: (String) -> Unit) {
                 .padding(innerPadding)
                 .padding(16.dp)
         ) {
-            items(3) { index ->
+            items(4) { index ->
                 val (route, buttonText) = if (index == 0) {
                     Screen.EffectOrderScreen.route to "Effect Order"
                 } else if (index == 1) {
                     Screen.DraggablePanelScreen.route to "Draggable Pane"
                 } else if (index == 2) {
                     Screen.SnapShotMutationPolicyScreen.route to "SnapShot Mutation Policy"
-                } else {
+                } else if (index == 3) {
+                    Screen.ListScreen.route to "List Sample"
+                }
+                else {
                     Screen.AvoidLaunchEffectScreen.route to "Avoid LaunchEffect"
                 }
                 Button(modifier = Modifier.fillMaxWidth(), onClick = {

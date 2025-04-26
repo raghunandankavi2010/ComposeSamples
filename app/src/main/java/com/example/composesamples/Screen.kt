@@ -7,4 +7,6 @@ sealed class Screen(val route: String) {
     object DraggablePanelScreen: Screen("draggable_panel_screen")
     object SnapShotMutationPolicyScreen: Screen("snap_shot_mutation_policy")
     object AvoidLaunchEffectScreen: Screen("avoid_launch_effect_initial")
+    object ListScreen: Screen("list_screen")
+    object DetailScreen: Screen("detail_screen")
 }
