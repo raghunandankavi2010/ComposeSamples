@@ -1,0 +1,7 @@
+package com.example.composesamples
+
+// Screen.kt
+sealed class Screen(val route: String) {
+    object Main: Screen("main_screen")
+    object EffectOrderScreen: Screen("effect_order_screen")
+}
