@@ -26,6 +26,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.composesamples.lists.DetailScreen
 import com.example.composesamples.lists.MyList
+import com.example.composesamples.newstuffs.TextResizeDemo
 import com.example.composesamples.ui.theme.ComposeSamplesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -69,6 +70,14 @@ class MainActivity : ComponentActivity() {
                     composable(route = Screen.DetailScreen.route) {
                         DetailScreen(navController = navController)
                     }
+
+                    composable(route = Screen.LaunchEffectDemoScreen.route) {
+                        TimerScreen()
+                    }
+
+                    composable(route = Screen.TextResizeDemo.route) {
+                        TextResizeDemo()
+                    }
                 }
             }
         }
@@ -97,7 +106,7 @@ fun MainScreen(modifier: Modifier = Modifier, navigateTo: (String) -> Unit) {
                 .padding(innerPadding)
                 .padding(16.dp)
         ) {
-            items(4) { index ->
+            items(6) { index ->
                 val (route, buttonText) = if (index == 0) {
                     Screen.EffectOrderScreen.route to "Effect Order"
                 } else if (index == 1) {
@@ -106,9 +115,12 @@ fun MainScreen(modifier: Modifier = Modifier, navigateTo: (String) -> Unit) {
                     Screen.SnapShotMutationPolicyScreen.route to "SnapShot Mutation Policy"
                 } else if (index == 3) {
                     Screen.ListScreen.route to "List Sample"
-                }
-                else {
-                    Screen.AvoidLaunchEffectScreen.route to "Avoid LaunchEffect"
+                } else if (index == 4) {
+                    Screen.LaunchEffectDemoScreen.route to "Launch Effect Demo"
+                } else if (index == 5) {
+                    Screen.TextResizeDemo.route to "Text Resize"
+                } else {
+                    Screen.TextResizeDemo.route to "Text Resize"
                 }
                 Button(modifier = Modifier.fillMaxWidth(), onClick = {
                     navigateTo(route)

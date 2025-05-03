@@ -9,4 +9,6 @@ sealed class Screen(val route: String) {
     object AvoidLaunchEffectScreen: Screen("avoid_launch_effect_initial")
     object ListScreen: Screen("list_screen")
     object DetailScreen: Screen("detail_screen")
+    object LaunchEffectDemoScreen: Screen("launch_effect_screen")
+    object TextResizeDemo: Screen("text_resize_screen")
 }
